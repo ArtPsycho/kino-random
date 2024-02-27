@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>KinoRandom</title>
+</head>
+<body class="page">
+  <div class="page__content">
+    <form class="form" name="search-form">
+      <!-- <fieldset id="genre-field">
+        <div class="choice-button">
+          <input
+            type="radio"
+            name="genre"
+            value="horror"
+            id="horror-radio-button"
+          />
+          <label>Horror</label>
+        </div>
+        <div class="choice-button">
+          <input
+            type="radio"
+            name="genre"
+            value="comedy"
+            id="comedy-radio-button"
+          />
+        </div>
+        <label>Comedy</label>
+        <div>
+          <button id="submit-button">Выбрать</button>
+        </div>
+      </fieldset> -->
+
+      <!-- Страница выбора жанра -->
+      <fieldset id="genre-field">
+        <label for="genre-select">Шаг 1:
+          <span>Жанр</span>
+        </label>
+        <select name="genre" id="genre-select">
+          <option value="">--Выберите жанр</option>
+          <option value="comedy">Комедия</option>
+          <option value="horror">Ужасы</option>
+          <option value="drama">Драма</option>
+        </select>
+        <button>Выбрать</button>
+      </fieldset>
+
+      <!-- Страница выбора рейтинга -->
+      <fieldset id="rating-field">
+        <div>
+          <input
+            type="radio"
+            name="rating"
+            value="0-6.2"
+            id="bad-rating-radio-button"
+          />
+          <label id="bad-rating-radio-button">Плохо</label>
+          <input
+            type="radio"
+            name="rating"
+            value="6.3-7.6"
+            id="middle-rating-radio-button"
+          />
+          <label id="middle-rating-radio-button">Средне</label>
+          <input
+            type="radio"
+            name="rating"
+            value="7.7-10"
+            id="nice-rating-radio-button"
+          />
+          <label id="nice-rating-radio-button">Круто</label>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+
+  <button id="search">Запрос</button>
+  <p id="search-result"></з>
+
+<!-- <script src="./index.js"></script> -->
+<!-- <script src="./api.js"></script> -->
+</body>
