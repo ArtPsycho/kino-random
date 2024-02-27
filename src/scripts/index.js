@@ -1,4 +1,4 @@
-// import '../pages/index.css';
+import '../pages/index.css';
 // import { openPopup, closePopup } from './modal';
 // import { createCard, likeCard, removeCard } from './card';
 // import { enableValidation, clearValidation } from './validation';

@@ -1,0 +1,21 @@
+html, body.page {
+	height: 100%;
+	/* font-family: $font; */
+	/* font-size: $baseFontSize; */
+	color: #fff;
+  background: linear-gradient(150deg, #110f13 60%, #8f1010 85%, #bb812f 100%);
+  /* background: linear-gradient(150deg, #110f13 70%, #fd1d1d 80%, #fcb045 100%); */
+}
+
+.page__wrapper {
+	width: 100%;
+
+	&_locked {
+		position: fixed;
+	}
+}
+
+.page__content {
+  display: flex;
+  justify-content: center;
+}

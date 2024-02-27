@@ -9,7 +9,7 @@
 </head>
 <body class="page">
   <div class="page__content">
-    <form class="form" name="search-form">
+    <!-- <form class="form" name="search-form">
       <!-- <fieldset id="genre-field">
         <div class="choice-button">
           <input
@@ -35,7 +35,7 @@
       </fieldset> -->
 
       <!-- Страница выбора жанра -->
-      <fieldset id="genre-field">
+      <!-- <fieldset id="genre-field">
         <label for="genre-select">Шаг 1:
           <span>Жанр</span>
         </label>
@@ -49,7 +49,7 @@
       </fieldset>
 
       <!-- Страница выбора рейтинга -->
-      <fieldset id="rating-field">
+      <!-- <fieldset id="rating-field">
         <div>
           <input
             type="radio"
@@ -75,10 +75,92 @@
         </div>
       </fieldset>
     </form>
-  </div>
+    </div> -->
+    <!-- 
+     <button id="search">Запрос</button>
+    <p id="search-result"></p> -->
 
-  <button id="search">Запрос</button>
-  <p id="search-result"></з>
+    <!-- Header страницы -->
+    <header class="header">
+      <div class="header__container">
+        <a class="header__logo" href="/">KinoRandom</a>
+      </div>
+    </header>
+
+    <!-- Начало -->
+    <div class="modal">
+     <div class="modal__container">
+      <div class="modal__container_info">
+        <h2 class="modal__start-title">Добро пожаловать!</h2>
+        <p class="modal__start-description">Решите, что будете смотреть сегодня в честном рандоме!</p>    
+      </div>
+      <div class="modal__container_action">
+        <button class="button" aria-label="начать">Начать</button>
+      </div>
+     </div>
+    </div>
+
+    <!-- Количество участников -->
+    <div class="modal">
+      <div class="modal__container">
+        <h2 class="modal__title">Количество участников</h2>
+        <p class="modal__description">Выберите количество участников</p>
+        <select name="members" id="members-select">
+          <option value="">--Выберите количество участников</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+        <button>Выбрать</button>
+      </div>
+    </div>
+
+    <!-- Страница выбора жанра -->
+    <div class="modal start">
+      <div class="modal__container">
+        <h2 class="modal__title">Жанр</h2>
+        <p class="modal__description">Выберите жанр фильма</p>
+        <select name="genre" id="genre-select">
+          <option value="">--Выберите жанр</option>
+          <option value="comedy">Комедия</option>
+          <option value="horror">Ужасы</option>
+          <option value="drama">Драма</option>
+        </select>
+        <button class="button">Выбрать</button>
+      </div>
+    </div>
+
+    <!-- Страница выбора рейтинга -->
+    <div class="modal">
+      <div class="modal__container">
+        <h2 class="modal__title">Рейтинг</h2>
+        <p class="modal__description">Выберите рейтинг фильма</p>
+        <div class="rating-select">
+          <input
+            type="radio"
+            name="rating"
+            value="7.7-10"
+            id="nice-rating-radio-button"
+          />
+          <label id="nice-rating-radio-button">Круто</label>
+          <input
+            type="radio"
+            name="rating"
+            value="6.3-7.6"
+            id="middle-rating-radio-button"
+          />
+          <label id="middle-rating-radio-button">Средне</label>
+          <input
+          type="radio"
+          name="rating"
+          value="0-6.2"
+          id="bad-rating-radio-button"
+        />
+        <label id="bad-rating-radio-button">Плохо</label>
+        </div>
+      </div>
+    </div>
+
 
 <!-- <script src="./index.js"></script> -->
 <!-- <script src="./api.js"></script> -->

@@ -1,0 +1,36 @@
+.modal {
+  display: none;
+  background-color: #131313;
+  width: 600px;
+  height: 600px;
+  border-radius: 16px;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.modal.start {
+  display: block;
+}
+
+.modal__container {
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.modal__container_info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #1f1f1f;
+}
+
+.modal__container_action {
+  display: flex;
+  min-height: 400px;
+  background-color: #1f1f1f;
+  align-items: flex-end;
+}

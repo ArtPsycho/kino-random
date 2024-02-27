@@ -1,0 +1,22 @@
+.header {
+  height: 80px;
+  width: 100%;
+  min-width: 500px;
+  /* background-color: #131313; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__logo {
+  font-size: 32px;
+  font-weight: 900;
+  text-decoration: none;
+  color: beige;
+}
