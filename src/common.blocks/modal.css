@@ -1,36 +1,98 @@
 .modal {
   display: none;
   background-color: #131313;
-  width: 600px;
-  height: 600px;
+  width: 500px;
+  height: 700px;
   border-radius: 16px;
   position: absolute;
   top: 50%;
-  transform: translate(0, -50%);
+  transform: translate(0, 7%);
+  border: solid 2px #343434;
+  padding: 30px 40px;
 }
 
-.modal.start {
+.modal.modal__opened {
   display: block;
 }
 
 .modal__container {
-  padding: 20px 40px;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   gap: 10px;
 }
 
 .modal__container_info {
+  height: 150px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  background-color: #1f1f1f;
+  gap: 20px;
+  /* background-color: #1f1f1f; */
 }
 
 .modal__container_action {
+  padding:  0;
+  height: 100%;
   display: flex;
-  min-height: 400px;
-  background-color: #1f1f1f;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  /* background-color: #1f1f1f; */
   align-items: flex-end;
 }
+
+.movie-result {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.movie__image {
+  height: 300px;
+  width: 250px;
+  background-color: #131313; 
+  align-self: center;
+  object-fit: contain;
+}
+
+.movie__description {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+#description_title {
+  align-self: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 28px;
+  font-weight: 900;
+  color: rgb(237, 162, 43);
+}
+
+h1, h2, h3, p {
+  margin: 0;
+}
+
+/* TODO прописать normalize для h2, h3, p */
+/* Или скачать другой */
+.modal__title {
+  font-size: 28px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  color: rgb(237, 162, 43);
+}
+
+.modal__description {
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+

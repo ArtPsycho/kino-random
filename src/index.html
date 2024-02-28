@@ -9,76 +9,6 @@
 </head>
 <body class="page">
   <div class="page__content">
-    <!-- <form class="form" name="search-form">
-      <!-- <fieldset id="genre-field">
-        <div class="choice-button">
-          <input
-            type="radio"
-            name="genre"
-            value="horror"
-            id="horror-radio-button"
-          />
-          <label>Horror</label>
-        </div>
-        <div class="choice-button">
-          <input
-            type="radio"
-            name="genre"
-            value="comedy"
-            id="comedy-radio-button"
-          />
-        </div>
-        <label>Comedy</label>
-        <div>
-          <button id="submit-button">Выбрать</button>
-        </div>
-      </fieldset> -->
-
-      <!-- Страница выбора жанра -->
-      <!-- <fieldset id="genre-field">
-        <label for="genre-select">Шаг 1:
-          <span>Жанр</span>
-        </label>
-        <select name="genre" id="genre-select">
-          <option value="">--Выберите жанр</option>
-          <option value="comedy">Комедия</option>
-          <option value="horror">Ужасы</option>
-          <option value="drama">Драма</option>
-        </select>
-        <button>Выбрать</button>
-      </fieldset>
-
-      <!-- Страница выбора рейтинга -->
-      <!-- <fieldset id="rating-field">
-        <div>
-          <input
-            type="radio"
-            name="rating"
-            value="0-6.2"
-            id="bad-rating-radio-button"
-          />
-          <label id="bad-rating-radio-button">Плохо</label>
-          <input
-            type="radio"
-            name="rating"
-            value="6.3-7.6"
-            id="middle-rating-radio-button"
-          />
-          <label id="middle-rating-radio-button">Средне</label>
-          <input
-            type="radio"
-            name="rating"
-            value="7.7-10"
-            id="nice-rating-radio-button"
-          />
-          <label id="nice-rating-radio-button">Круто</label>
-        </div>
-      </fieldset>
-    </form>
-    </div> -->
-    <!-- 
-     <button id="search">Запрос</button>
-    <p id="search-result"></p> -->
 
     <!-- Header страницы -->
     <header class="header">
@@ -116,15 +46,15 @@
     </div>
 
     <!-- Страница выбора жанра -->
-    <div class="modal start">
+    <div class="modal">
       <div class="modal__container">
         <h2 class="modal__title">Жанр</h2>
         <p class="modal__description">Выберите жанр фильма</p>
-        <select name="genre" id="genre-select">
-          <option value="">--Выберите жанр</option>
-          <option value="comedy">Комедия</option>
-          <option value="horror">Ужасы</option>
-          <option value="drama">Драма</option>
+        <select name="genre" id="genre-select" class="option-selector">
+          <option class="option" value="">--Выберите жанр</option>
+          <option class="option" value="comedy">Комедия</option>
+          <option class="option" value="horror">Ужасы</option>
+          <option class="option" value="drama">Драма</option>
         </select>
         <button class="button">Выбрать</button>
       </div>
@@ -135,33 +65,65 @@
       <div class="modal__container">
         <h2 class="modal__title">Рейтинг</h2>
         <p class="modal__description">Выберите рейтинг фильма</p>
-        <div class="rating-select">
-          <input
-            type="radio"
-            name="rating"
-            value="7.7-10"
-            id="nice-rating-radio-button"
-          />
-          <label id="nice-rating-radio-button">Круто</label>
-          <input
-            type="radio"
-            name="rating"
-            value="6.3-7.6"
-            id="middle-rating-radio-button"
-          />
-          <label id="middle-rating-radio-button">Средне</label>
-          <input
-          type="radio"
-          name="rating"
-          value="0-6.2"
-          id="bad-rating-radio-button"
-        />
-        <label id="bad-rating-radio-button">Плохо</label>
-        </div>
+        <ul class="rating-select">
+          <li class="select-list_item">
+            <label id="nice-rating-radio-button">Круто</label>
+            <input
+              type="radio"
+              name="rating"
+              value="7.7-10"
+              id="nice-rating-radio-button"
+              class="radio-option"
+            />
+            
+          </li>
+          <li class="select-list_item">
+            <label id="middle-rating-radio-button">Средне</label>
+            <input
+              type="radio"
+              name="rating"
+              value="6.3-7.6"
+              id="middle-rating-radio-button"
+              class="radio-option"
+            />
+           
+          </li>
+          <li class="select-list_item">
+            <label id="bad-rating-radio-button">Плохо</label>
+            <input
+              type="radio"
+              name="rating"
+              value="0-6.2"
+              id="bad-rating-radio-button"
+              class="radio-option"
+            />
+          </li>
+        </ul>
+        <button class="button">Выбрать</button>
       </div>
     </div>
 
+    <!-- Страница отображения результата -->
+    <div class="modal modal__opened">
+      <div class="modal__container">
+        <div class="modal__container_info">
+          <h2 class="modal__title">Ваш результат</h2>
+          <p class="modal__description">Честный рандом определил фильм</p>
+        </div>
+        <div class="modal__container_action">
+          <div class="movie-result">
+            <img class="movie__image" id="description_image" src="" alt="">
+            <h3 class="movie__title" id="description_title"></h3>
+            <p class="movie__description" id="description_country"></p>
+            <p class="movie__description" id="description_genre"></p>
+            <p class="movie__description" id="description_year"></p>
+            <p class="movie__description" id="description_rating"></p>
+          </div>
+          
+        </div>
+        <button class="button" id="repeat-button">Повторить</button>
+      </div>
+    </div>
 
-<!-- <script src="./index.js"></script> -->
-<!-- <script src="./api.js"></script> -->
+  </div>
 </body>

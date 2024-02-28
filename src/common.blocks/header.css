@@ -15,8 +15,9 @@
 }
 
 .header__logo {
+  font-family: 'Inter', sans-serif;
   font-size: 32px;
   font-weight: 900;
   text-decoration: none;
-  color: beige;
+  color: rgb(237, 162, 43);
 }

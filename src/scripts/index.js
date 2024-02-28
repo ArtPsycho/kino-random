@@ -1,4 +1,6 @@
 import '../pages/index.css';
+import { getSearchData } from './api';
+
 // import { openPopup, closePopup } from './modal';
 // import { createCard, likeCard, removeCard } from './card';
 // import { enableValidation, clearValidation } from './validation';
@@ -196,4 +198,26 @@ import '../pages/index.css';
 //   })
 
 
+const repeatButton = document.getElementById('repeat-button');
 
+const movieTitle = document.getElementById('description_title');
+const movieGenre = document.getElementById('description_genre');
+const movieYear = document.getElementById('description_year');
+const movieRating = document.getElementById('description_rating');
+
+repeatButton.addEventListener('click', () => {
+  // getSearchData(res => {
+    // const parsedData = JSON.parse(res); 
+    // movieTitle.textContent = res.name;
+    // console.log(parsedData.name);
+
+    // movieTitle.textContent = parsedData.name;
+    // movieGenre.textContent = parsedData.genre;
+    // movieYear.textContent = parsedData.year;
+    // movieRating.textContent = parsedData.rating.kp;
+
+    // console.log(parsedData.name);
+    // console.log('hello');
+  // })
+  getSearchData();
+})
