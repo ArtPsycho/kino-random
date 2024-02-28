@@ -1,9 +1,11 @@
-html, body.page {
-	height: 100%;
+/* html, body. */
+
+.page {
+	height: 100vh;
 	/* font-family: $font; */
 	/* font-size: $baseFontSize; */
 	color: #fff;
-  background: linear-gradient(150deg, #110f13 60%, #b11414 85%, #df8d1a 100%);
+  background: linear-gradient(150deg, #110f13 60%, #b12c14 85%, #df8d1a 100%);
   /* background: linear-gradient(150deg, #110f13 70%, #fd1d1d 80%, #fcb045 100%); */
 }
 
@@ -16,6 +18,7 @@ html, body.page {
 }
 
 .page__content {
+	width: 100%;
   display: flex;
   justify-content: center;
 	position: relative;

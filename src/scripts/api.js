@@ -1,9 +1,9 @@
 // const config = {
-//   // baseUrl: 'https://api.kinopoisk.dev/v1.4/movie/random?',
-//   headers: {
-//     'X-API-KEY': 'P0Q2AHA-JJW45CM-P5JZ66Y-K22ZHBW',
-//     'Content-Type': 'application/json'
-//   },
+//   baseUrl: 'https://api.kinopoisk.dev/v1.4/movie/random?',
+//   // headers: {
+//   //   "X-API-KEY": "P0Q2AHA-JJW45CM-P5JZ66Y-K22ZHBW",
+//     // 'Content-Type': 'application/json'
+//   // },
 // };
 
 // function checkResponse(res) {
@@ -29,21 +29,42 @@
 //   })
 // };
 
+// "https://api.kinopoisk.dev/v1.4/movie/random?rating.kp=6.8-10"
+
+
+// var requestOptions = {
+//   method: 'GET',
+//   redirect: 'follow',
+//   headers: {
+//     "X-API-KEY": "P0Q2AHA-JJW45CM-P5JZ66Y-K22ZHBW"
+//   }
+// };
+
 
 // работающий вариант API
-// TODO: разобрать на изменяемые компоненты
-
-var requestOptions = {
-  method: 'GET',
-  redirect: 'follow'
+// TODO: разобраться с Content-Type
+const config = {
+  baseUrl: 'https://api.kinopoisk.dev/v1.4/movie/random?',
+  headers: {
+    // "X-API-KEY": "P0Q2AHA-JJW45CM-P5JZ66Y-K22ZHBW",
+    'Content-Type': 'application/json'
+  }
 };
+
+const ratingKp = 'rating.kp=6.8-10';
+
+
 export async function getSearchData() {
-return fetch("https://api.kinopoisk.dev/v1.4/movie/random?token=P0Q2AHA-JJW45CM-P5JZ66Y-K22ZHBW&rating.kp=6.8-10", requestOptions)
+  return fetch(`${config.baseUrl}&${ratingKp}`, {
+    method: 'GET',
+    redirect: 'follow',
+    headers: config.headers
+  })
   .then(response => response.text())
-  // .then(result => console.log(result))
   .then(result => {
     const parsedData = JSON.parse(result);
     console.log(parsedData);
+
     const movieTitle = document.getElementById('description_title');
     const movieGenre = document.getElementById('description_genre');
     const movieYear = document.getElementById('description_year');
@@ -55,10 +76,10 @@ return fetch("https://api.kinopoisk.dev/v1.4/movie/random?token=P0Q2AHA-JJW45CM-
     
     movieYear.textContent = `Год выпуска: ${parsedData.year}`;
     movieRating.textContent = `Рейтинг на КиноПоиск: ${parsedData.rating.kp}`;
-    movieGenre.textContent = `Жанр: ${parsedData.genres.map(genre => genre.name)}`;
+    movieGenre.textContent = `Жанр: ${parsedData.genres.map(genre => genre.name).join(', ')}`;
     movieImage.src = parsedData.poster.previewUrl;
     movieImage.alt = parsedData.name;
-    movieCountry.textContent = `Страна: ${parsedData.countries.map(country => country.name)}`;
+    movieCountry.textContent = `Страна: ${parsedData.countries.map(country => country.name).join(', ')}`;
   })
 
   .catch(error => console.log('error', error));

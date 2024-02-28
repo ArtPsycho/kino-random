@@ -13,8 +13,11 @@
 Импортируем на уровень выше */
 
 @import url(../vendor/fonts.css);
+@import url(../vendor/normalize.css);
+
 @import url(../common.blocks/modal.css);
 @import url(../common.blocks/page.css);
 @import url(../common.blocks/header.css);
 @import url(../common.blocks/buttons.css);
 @import url(../common.blocks/selectors.css);
+

@@ -2,7 +2,7 @@
   display: none;
   background-color: #131313;
   width: 500px;
-  height: 700px;
+  height: 750px;
   border-radius: 16px;
   position: absolute;
   top: 50%;
@@ -66,6 +66,7 @@
   font-size: 16px;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
+  color: #daccba;
 }
 
 #description_title {
@@ -74,14 +75,14 @@
   font-size: 28px;
   font-weight: 900;
   color: rgb(237, 162, 43);
+  text-align: center;
 }
 
 h1, h2, h3, p {
   margin: 0;
 }
 
-/* TODO прописать normalize для h2, h3, p */
-/* Или скачать другой */
+
 .modal__title {
   font-size: 28px;
   font-family: 'Inter', sans-serif;
@@ -92,7 +93,8 @@ h1, h2, h3, p {
 .modal__description {
   font-size: 16px;
   font-family: 'Inter', sans-serif;
-  font-weight: 400;
+  font-weight: 500;
+  color: #daccba;
 }
 
 

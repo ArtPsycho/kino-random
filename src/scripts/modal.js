@@ -27,3 +27,8 @@ function closePopupOverlay(event) {
 }
 
 export { openPopup, closePopup };
+
+
+
+// TODO: провесить айдишники на кнопки, которые 
+// будут снимать или вешать класс modal__opened

@@ -1,13 +1,14 @@
 .button {
   width: 100%;
   min-height: 60px;
-  border-radius: 10px;
+  border-radius: 8px;
   /* border: solid 4px #3b32c2; */
   border: none;
-  background-color: #5149c9;
+  background-color: #363532;
   color: aliceblue;
   font-size: 18px;
   font-weight: 900;
+  font-family: 'Inter', sans-serif;
 }
 
 .button:hover {

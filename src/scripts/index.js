@@ -200,24 +200,42 @@ import { getSearchData } from './api';
 
 const repeatButton = document.getElementById('repeat-button');
 
-const movieTitle = document.getElementById('description_title');
-const movieGenre = document.getElementById('description_genre');
-const movieYear = document.getElementById('description_year');
-const movieRating = document.getElementById('description_rating');
+// const movieTitle = document.getElementById('description_title');
+// const movieGenre = document.getElementById('description_genre');
+// const movieYear = document.getElementById('description_year');
+// const movieRating = document.getElementById('description_rating');
+// const movieImage = document.getElementById('description_image');
+// const movieCountry = document.getElementById('description_country');
+
 
 repeatButton.addEventListener('click', () => {
-  // getSearchData(res => {
-    // const parsedData = JSON.parse(res); 
-    // movieTitle.textContent = res.name;
-    // console.log(parsedData.name);
-
-    // movieTitle.textContent = parsedData.name;
-    // movieGenre.textContent = parsedData.genre;
-    // movieYear.textContent = parsedData.year;
-    // movieRating.textContent = parsedData.rating.kp;
-
-    // console.log(parsedData.name);
-    // console.log('hello');
-  // })
   getSearchData();
 })
+
+
+// TODO: разобраться с промисом
+
+// Promise.all(getSearchData())
+//   .then((result) => {
+//     const parsedData = JSON.parse(result);
+//     console.log(parsedData);
+
+//     const movieTitle = document.getElementById('description_title');
+//     const movieGenre = document.getElementById('description_genre');
+//     const movieYear = document.getElementById('description_year');
+//     const movieRating = document.getElementById('description_rating');
+//     const movieImage = document.getElementById('description_image');
+//     const movieCountry = document.getElementById('description_country');
+
+//     movieTitle.textContent = parsedData.name;
+    
+//     movieYear.textContent = `Год выпуска: ${parsedData.year}`;
+//     movieRating.textContent = `Рейтинг на КиноПоиск: ${parsedData.rating.kp}`;
+//     movieGenre.textContent = `Жанр: ${parsedData.genres.map(genre => genre.name).join(', ')}`;
+//     movieImage.src = parsedData.poster.previewUrl;
+//     movieImage.alt = parsedData.name;
+//     movieCountry.textContent = `Страна: ${parsedData.countries.map(country => country.name).join(', ')}`;
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   })
