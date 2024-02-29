@@ -51,11 +51,9 @@ const config = {
   }
 };
 
-const ratingKp = 'rating.kp=6.8-10';
 
-
-export async function getSearchData(genreState) {
-  return fetch(`${config.baseUrl}&${ratingKp}&${genreState}`, {
+export async function getSearchData(genreState, ratingState) {
+  return fetch(`${config.baseUrl}&${ratingState}&${genreState}`, {
     method: 'GET',
     redirect: 'follow',
     headers: config.headers

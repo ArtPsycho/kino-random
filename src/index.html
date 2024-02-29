@@ -98,7 +98,7 @@
     </div>
 
     <!-- Страница выбора рейтинга -->
-    <div class="modal " >
+    <div class="modal" id="form-rating">
       <div class="modal__container">
         <div class="modal__container_info">
           <h2 class="modal__title">Рейтинг</h2>
@@ -106,18 +106,18 @@
         </div>
         <div class="modal__container_action">
           <ul class="rating-select">
-            <li class="select-list_item">
-              <label id="nice-rating-radio-button">Круто</label>
+            <li class="select-list_item" id="high-rating-button">
+              <label>Круто</label>
               <input
                 type="radio"
                 name="rating"
                 value="7.7-10"
-                id="nice-rating-radio-button"
+                id="high-rating-radio-button"
                 class="radio-option"
               />
             </li>
-            <li class="select-list_item">
-              <label id="middle-rating-radio-button">Средне</label>
+            <li class="select-list_item" id="middle-rating-button">
+              <label>Средне</label>
               <input
                 type="radio"
                 name="rating"
@@ -126,19 +126,19 @@
                 class="radio-option"
               />
             </li>
-            <li class="select-list_item">
-              <label id="bad-rating-radio-button">Плохо</label>
+            <li class="select-list_item" id="low-rating-button">
+              <label>Плохо</label>
               <input
                 type="radio"
                 name="rating"
-                value="0-6.2"
-                id="bad-rating-radio-button"
+                value="1-6.2"
+                id="low-rating-radio-button"
                 class="radio-option"
               />
             </li>
           </ul>
         </div>
-        <button class="button">Выбрать</button>
+        <button class="button button-accent" id="rating-button">Выбрать</button>
       </div>
     </div>
 

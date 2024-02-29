@@ -236,6 +236,7 @@ const startButton = document.getElementById('start-button');
 const formStart = document.getElementById('form-start')
 const formResult = document.getElementById('form-result');
 const formGenre = document.getElementById('form-genre');
+const formRating = document.getElementById('form-rating');
 
 // Кнопка start на стартовой странице
 // Переключение на другую страницу
@@ -252,12 +253,12 @@ startButton.addEventListener('click', () => {
 const genreButton = document.getElementById('genre-button');
 const genreSelect = document.getElementById('genre-select');
 
-// Глобально объявляем переменные
-var genreValue;
-var genreState;
+// Глобально объявляем переменные значений состояния "Жанр"
+let genreValue;
+let genreState;
 
 // Обновление селектора жанров
-function updateSelector() {
+function updateGenreSelector() {
   genreValue = genreSelect.options[genreSelect.selectedIndex].value;
   console.log(genreValue);
   return genreValue;
@@ -266,7 +267,7 @@ function updateSelector() {
 // Слушатель обновления выбора селектора жанров
 // genreSelect.addEventListener('change', updateSelector);
 genreSelect.addEventListener('change', function() {
-  updateSelector();
+  updateGenreSelector();
   genreState = `genres.name=${genreValue}`;
   console.log(genreState);
   return genreState;
@@ -274,11 +275,75 @@ genreSelect.addEventListener('change', function() {
 
 
 genreButton.addEventListener('click', () => {
-  getSearchData(genreState);
   formGenre.classList.remove('modal__opened');
-  formResult.classList.add('modal__opened');
+  // formResult.classList.add('modal__opened');
+  formRating.classList.add('modal__opened');
   console.log(genreState);
   
+})
+
+
+// Глобально объявляем переменные значений состояния "Рейтинг"
+let ratingValue;
+let ratingState;
+
+// Страница выбора рейтинга
+const highRatingButton = document.getElementById('high-rating-button');
+const middleRatingButton = document.getElementById('middle-rating-button');
+const lowRatingButton = document.getElementById('low-rating-button');
+const ratingButton = document.getElementById('rating-button');
+
+// Обновление value при переключении радио
+function updateRatingSelector() {
+  ratingValue = document.querySelector('input[name=rating]:checked').value;
+  console.log(ratingValue);
+  return ratingValue;
+}
+
+// Привязываем кнопки к радио
+highRatingButton.addEventListener('click', () => {
+  document.getElementById('high-rating-radio-button').checked = true;
+  document.getElementById('middle-rating-radio-button').checked = false;
+  document.getElementById('low-rating-radio-button').checked = false;
+  console.log('high-rating');
+  updateRatingSelector();
+  highRatingButton.closest('.select-list_item').classList.add('select-list_item-accent');
+  middleRatingButton.closest('.select-list_item').classList.remove('select-list_item-accent');
+  lowRatingButton.closest('.select-list_item').classList.remove('select-list_item-accent');
+})
+
+middleRatingButton.addEventListener('click', () => {
+  document.getElementById('middle-rating-radio-button').checked = true;
+  document.getElementById('high-rating-radio-button').checked = false;
+  document.getElementById('low-rating-radio-button').checked = false;
+  console.log('middle-rating');
+  updateRatingSelector()
+  middleRatingButton.closest('.select-list_item').classList.add('select-list_item-accent');
+  // middleRatingButton.filter(closest('.select-list_item')).classList.remove('select-list_item-accent');
+  highRatingButton.closest('.select-list_item').classList.remove('select-list_item-accent');
+  lowRatingButton.closest('.select-list_item').classList.remove('select-list_item-accent');
+})
+
+lowRatingButton.addEventListener('click', () => {
+  document.getElementById('low-rating-radio-button').checked = true;
+  document.getElementById('high-rating-radio-button').checked = false;
+  document.getElementById('middle-rating-radio-button').checked = false;
+  console.log('low-rating');
+  updateRatingSelector()
+  lowRatingButton.closest('.select-list_item').classList.add('select-list_item-accent');
+  highRatingButton.closest('.select-list_item').classList.remove('select-list_item-accent');
+  middleRatingButton.closest('.select-list_item').classList.remove('select-list_item-accent');
+})
+
+// Слушатель на кнопку действия страницы рейтинга
+// Добавляет значение value радио в общий стейт
+ratingButton.addEventListener('click', () => {
+  formRating.classList.remove('modal__opened');
+  formResult.classList.add('modal__opened');
+  updateRatingSelector();
+  ratingState = `rating.kp=${ratingValue}`;
+  console.log(ratingState);
+  getSearchData(genreState, ratingState);
 })
 
 
@@ -316,6 +381,6 @@ homeButton.addEventListener('click', () => {
 
 // Кнопка repeat на странице отображения результата
 repeatButton.addEventListener('click', () => {
-  getSearchData(genreState);
+  getSearchData(genreState, ratingState);
 });
 
