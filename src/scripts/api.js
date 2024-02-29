@@ -46,7 +46,7 @@
 const config = {
   baseUrl: 'https://api.kinopoisk.dev/v1.4/movie/random?',
   headers: {
-    // "X-API-KEY": "P0Q2AHA-JJW45CM-P5JZ66Y-K22ZHBW",
+    "X-API-KEY": "P0Q2AHA-JJW45CM-P5JZ66Y-K22ZHBW",
     'Content-Type': 'application/json'
   }
 };
@@ -54,8 +54,8 @@ const config = {
 const ratingKp = 'rating.kp=6.8-10';
 
 
-export async function getSearchData() {
-  return fetch(`${config.baseUrl}&${ratingKp}`, {
+export async function getSearchData(genreState) {
+  return fetch(`${config.baseUrl}&${ratingKp}&${genreState}`, {
     method: 'GET',
     redirect: 'follow',
     headers: config.headers

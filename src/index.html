@@ -13,98 +13,137 @@
     <!-- Header страницы -->
     <header class="header">
       <div class="header__container">
-        <a class="header__logo" href="/">KinoRandom</a>
+        <!-- <a class="header__logo" href="/">KinoRandom</a> -->
       </div>
     </header>
 
     <!-- Начало -->
-    <div class="modal modal__opened">
+    <div class="modal modal__opened" id="form-start">
      <div class="modal__container">
       <div class="modal__container_info">
-        <h2 class="modal__start-title">Добро пожаловать!</h2>
-        <p class="modal__start-description">Решите, что будете смотреть сегодня в честном рандоме!</p>    
+        <h2 class="modal__title">Добро пожаловать!</h2>
+        <p class="modal__description">Решите, что будете смотреть сегодня в честном рандоме!</p>    
       </div>
-      <div class="modal__container_action">
-        <button class="button" aria-label="начать">Начать</button>
-      </div>
+      <button class="button button-accent" aria-label="начать" id="start-button">Начать</button>
+      <!-- <div class="modal__container_action">
+        
+      </div> -->
      </div>
     </div>
 
     <!-- Количество участников -->
-    <div class="modal">
+    <div class="modal ">
       <div class="modal__container">
-        <h2 class="modal__title">Количество участников</h2>
-        <p class="modal__description">Выберите количество участников</p>
-        <select name="members" id="members-select">
-          <option value="">--Выберите количество участников</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-        </select>
-        <button>Выбрать</button>
-      </div>
-    </div>
-
-    <!-- Страница выбора жанра -->
-    <div class="modal">
-      <div class="modal__container">
-        <h2 class="modal__title">Жанр</h2>
-        <p class="modal__description">Выберите жанр фильма</p>
-        <select name="genre" id="genre-select" class="option-selector">
-          <option class="option" value="">--Выберите жанр</option>
-          <option class="option" value="comedy">Комедия</option>
-          <option class="option" value="horror">Ужасы</option>
-          <option class="option" value="drama">Драма</option>
-        </select>
+        <div class="modal__container_info">
+          <h2 class="modal__title">Количество участников</h2>
+          <p class="modal__description">Выберите количество участников</p>
+        </div>
+        <div class="modal__container_action">
+          <select name="members" id="members-select">
+            <option value="">--Выберите количество участников</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
         <button class="button">Выбрать</button>
       </div>
     </div>
 
-    <!-- Страница выбора рейтинга -->
-    <div class="modal">
+    <!-- Страница выбора жанра -->
+    <div class="modal " id="form-genre">
       <div class="modal__container">
-        <h2 class="modal__title">Рейтинг</h2>
-        <p class="modal__description">Выберите рейтинг фильма</p>
-        <ul class="rating-select">
-          <li class="select-list_item">
-            <label id="nice-rating-radio-button">Круто</label>
-            <input
-              type="radio"
-              name="rating"
-              value="7.7-10"
-              id="nice-rating-radio-button"
-              class="radio-option"
-            />
-            
-          </li>
-          <li class="select-list_item">
-            <label id="middle-rating-radio-button">Средне</label>
-            <input
-              type="radio"
-              name="rating"
-              value="6.3-7.6"
-              id="middle-rating-radio-button"
-              class="radio-option"
-            />
-           
-          </li>
-          <li class="select-list_item">
-            <label id="bad-rating-radio-button">Плохо</label>
-            <input
-              type="radio"
-              name="rating"
-              value="0-6.2"
-              id="bad-rating-radio-button"
-              class="radio-option"
-            />
-          </li>
-        </ul>
+        <div class="modal__container_info">
+          <h2 class="modal__title">Жанр</h2>
+          <p class="modal__description">Выберите жанр фильма</p>
+        </div>
+        <div class="modal__container_action">
+          <select name="genre" id="genre-select" class="option-selector">
+            <option class="option" value="0" selected>--Выберите жанр--</option>
+            <option class="option" value="аниме">Аниме</option>
+            <option class="option" value="биография">Биография</option>
+            <option class="option" value="боевик">Боевик</option>
+            <option class="option" value="вестерн">Вестерн</option>
+            <option class="option" value="военный">Военный</option>
+            <option class="option" value="детектив">Детектив</option>
+            <option class="option" value="детский">Детский</option>
+            <option class="option" value="для взрослых">Для взрослых</option>
+            <option class="option" value="документальный">Документальный</option>
+            <option class="option" value="драма">Драма</option>
+            <option class="option" value="игра">Игра</option>
+            <option class="option" value="история">История</option>
+            <option class="option" value="концерт">Концерт</option>
+            <option class="option" value="короткометражка">Короткометражка</option>
+            <option class="option" value="криминал">Криминал</option>
+            <option class="option" value="мелодрама">Мелодрама</option>
+            <option class="option" value="музыка">Музыка</option>
+            <option class="option" value="мультфильм">Мультфильм</option>
+            <option class="option" value="мюзикл">Мюзикл</option>
+            <option class="option" value="новости">Новости</option>
+            <option class="option" value="приключения">Приключения</option>
+            <option class="option" value="реальное ТВ">Реальное ТВ</option>
+            <option class="option" value="семеный">Семейный</option>
+            <option class="option" value="спорт">Спорт</option>
+            <option class="option" value="ток-шоу">Ток-Шоу</option>
+            <option class="option" value="триллер">Триллер</option>
+            <option class="option" value="ужасы">Ужасы</option>
+            <option class="option" value="фантастика">Фантастика</option>
+            <option class="option" value="фильм-нуар">Фильм-нуар</option>
+            <option class="option" value="фэнтези">Фэнтези</option>
+            <option class="option" value="церемония">Церемония</option>
+          </select>
+        </div>
+        <button class="button button-accent" id="genre-button">Выбрать</button>
+      </div>
+    </div>
+
+    <!-- Страница выбора рейтинга -->
+    <div class="modal " >
+      <div class="modal__container">
+        <div class="modal__container_info">
+          <h2 class="modal__title">Рейтинг</h2>
+          <p class="modal__description">Выберите рейтинг фильма</p>
+        </div>
+        <div class="modal__container_action">
+          <ul class="rating-select">
+            <li class="select-list_item">
+              <label id="nice-rating-radio-button">Круто</label>
+              <input
+                type="radio"
+                name="rating"
+                value="7.7-10"
+                id="nice-rating-radio-button"
+                class="radio-option"
+              />
+            </li>
+            <li class="select-list_item">
+              <label id="middle-rating-radio-button">Средне</label>
+              <input
+                type="radio"
+                name="rating"
+                value="6.3-7.6"
+                id="middle-rating-radio-button"
+                class="radio-option"
+              />
+            </li>
+            <li class="select-list_item">
+              <label id="bad-rating-radio-button">Плохо</label>
+              <input
+                type="radio"
+                name="rating"
+                value="0-6.2"
+                id="bad-rating-radio-button"
+                class="radio-option"
+              />
+            </li>
+          </ul>
+        </div>
         <button class="button">Выбрать</button>
       </div>
     </div>
 
     <!-- Страница отображения результата -->
-    <div class="modal ">
+    <div class="modal" id="form-result">
       <div class="modal__container">
         <div class="modal__container_info">
           <h2 class="modal__title">Ваш результат</h2>
@@ -120,7 +159,10 @@
             <p class="movie__description" id="description_rating"></p>
           </div>
         </div>
-        <button class="button" id="repeat-button">Повторить</button>
+        <div class="modal__container_buttons">
+          <button class="button button-accent" id="home-button">На главную</button>
+          <button class="button" id="repeat-button">Повторить</button>
+        </div>
       </div>
     </div>
 

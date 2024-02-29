@@ -34,8 +34,12 @@
   max-width: 100%;
   border: 4px solid #373737;
   border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .select-list_item:hover {
-  border: 4px solid #62608a;
+  border: 4px solid #ed6f2b;
 }
+

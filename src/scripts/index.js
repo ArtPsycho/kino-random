@@ -1,6 +1,7 @@
 import '../pages/index.css';
 import { getSearchData } from './api';
 
+
 // import { openPopup, closePopup } from './modal';
 // import { createCard, likeCard, removeCard } from './card';
 // import { enableValidation, clearValidation } from './validation';
@@ -198,19 +199,7 @@ import { getSearchData } from './api';
 //   })
 
 
-const repeatButton = document.getElementById('repeat-button');
 
-// const movieTitle = document.getElementById('description_title');
-// const movieGenre = document.getElementById('description_genre');
-// const movieYear = document.getElementById('description_year');
-// const movieRating = document.getElementById('description_rating');
-// const movieImage = document.getElementById('description_image');
-// const movieCountry = document.getElementById('description_country');
-
-
-repeatButton.addEventListener('click', () => {
-  getSearchData();
-})
 
 
 // TODO: разобраться с промисом
@@ -239,3 +228,92 @@ repeatButton.addEventListener('click', () => {
 //   .catch((error) => {
 //     console.log(error);
 //   })
+
+
+
+// Стартовая страница
+const startButton = document.getElementById('start-button');
+const formStart = document.getElementById('form-start')
+const formResult = document.getElementById('form-result');
+const formGenre = document.getElementById('form-genre');
+
+// Кнопка start на стартовой странице
+// Переключение на другую страницу
+startButton.addEventListener('click', () => {
+  formStart.classList.remove('modal__opened');
+  formGenre.classList.add('modal__opened');
+})
+
+
+
+// Страница выбора жанра
+const genreButton = document.getElementById('genre-button');
+const genreSelect = document.getElementById('genre-select');
+
+// Глобально объявляем переменные
+var genreValue;
+var genreState;
+
+// Обновление селектора жанров
+function updateSelector() {
+  genreValue = genreSelect.options[genreSelect.selectedIndex].value;
+  console.log(genreValue);
+  return genreValue;
+}
+
+// Слушатель обновления выбора селектора жанров
+// genreSelect.addEventListener('change', updateSelector);
+genreSelect.addEventListener('change', function() {
+  updateSelector();
+  genreState = `genres.name=${genreValue}`;
+  console.log(genreState);
+  return genreState;
+});
+
+
+genreButton.addEventListener('click', () => {
+  getSearchData(genreState);
+  formGenre.classList.remove('modal__opened');
+  formResult.classList.add('modal__opened');
+  console.log(genreState);
+  
+})
+
+
+// Страница отображения результата
+const homeButton = document.getElementById('home-button');
+const repeatButton = document.getElementById('repeat-button');
+
+const movieTitle = document.getElementById('description_title');
+const movieGenre = document.getElementById('description_genre');
+const movieYear = document.getElementById('description_year');
+const movieRating = document.getElementById('description_rating');
+const movieImage = document.getElementById('description_image');
+const movieCountry = document.getElementById('description_country');
+
+
+
+// TODO: сбростить genreState при нажатии на homeButton
+
+// Кнопка home на странице отображения результата
+// Очистка формы
+homeButton.addEventListener('click', () => {
+  console.log('ok');
+  formResult.classList.remove('modal__opened');
+  formStart.classList.add('modal__opened');
+  
+  movieTitle.textContent = '';
+  movieGenre.textContent = '';
+  movieYear.textContent = '';
+  movieRating.textContent = '';
+  movieImage.src = '';
+  movieImage.alt = '';
+  movieCountry.textContent = '';
+
+})
+
+// Кнопка repeat на странице отображения результата
+repeatButton.addEventListener('click', () => {
+  getSearchData(genreState);
+});
+

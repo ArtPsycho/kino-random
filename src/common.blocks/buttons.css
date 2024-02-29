@@ -14,3 +14,12 @@
 .button:hover {
   background-color: #696881;
 }
+
+.button-accent {
+  background-color: #ed6f2b;
+}
+
+.button-accent:hover {
+  background-color: #d17848;
+}
+
