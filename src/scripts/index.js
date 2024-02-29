@@ -246,6 +246,8 @@ startButton.addEventListener('click', () => {
 
 
 
+// TODO: добавлять варианты выбора жанров через перебор json
+
 // Страница выбора жанра
 const genreButton = document.getElementById('genre-button');
 const genreSelect = document.getElementById('genre-select');
