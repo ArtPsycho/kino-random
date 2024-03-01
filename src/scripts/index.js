@@ -237,13 +237,48 @@ const formStart = document.getElementById('form-start')
 const formResult = document.getElementById('form-result');
 const formGenre = document.getElementById('form-genre');
 const formRating = document.getElementById('form-rating');
+const formMembers = document.getElementById('form-members');
+
 
 // Кнопка start на стартовой странице
 // Переключение на другую страницу
 startButton.addEventListener('click', () => {
   formStart.classList.remove('modal__opened');
+  formMembers.classList.add('modal__opened');
+})
+
+// Страница выбора количества участников
+const membersButton = document.getElementById('members-button');
+const membersSelect = document.getElementById('members-select');
+
+// Глобально объявляем переменные значений состояния "Выбор участников"
+let membersValue;
+
+// Обновление селектора участников
+function updateMembersSelector() {
+  membersValue = membersSelect.options[membersSelect.selectedIndex].value;
+  console.log(membersValue);
+  return membersValue;
+}
+
+// Слушатель обновления выбора селектора участников
+membersSelect.addEventListener('change', function() {
+  updateMembersSelector();
+  // genreState = `genres.name=${genreValue}`;
+});
+
+
+// function createMembersState(membersValue) {
+//   for (let i = 0; i < membersValue; i++) {
+    
+//   }
+// }
+
+membersButton.addEventListener('click', () => {
+  formMembers.classList.remove('modal__opened');
   formGenre.classList.add('modal__opened');
 })
+
 
 
 

@@ -32,21 +32,21 @@
     </div>
 
     <!-- Количество участников -->
-    <div class="modal ">
+    <div class="modal" id="form-members">
       <div class="modal__container">
         <div class="modal__container_info">
           <h2 class="modal__title">Количество участников</h2>
           <p class="modal__description">Выберите количество участников</p>
         </div>
         <div class="modal__container_action">
-          <select name="members" id="members-select">
-            <option value="">--Выберите количество участников</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+          <select name="members" id="members-select" class="option-selector">
+            <option class="option" value="0">--Выберите количество участников</option>
+            <option class="option" value="1">1</option>
+            <option class="option" value="2">2</option>
+            <option class="option" value="3">3</option>
           </select>
         </div>
-        <button class="button">Выбрать</button>
+        <button class="button" id="members-button">Выбрать</button>
       </div>
     </div>
 
@@ -121,7 +121,7 @@
               <input
                 type="radio"
                 name="rating"
-                value="6.3-7.6"
+                value="6.2-7.7"
                 id="middle-rating-radio-button"
                 class="radio-option"
               />
