@@ -1,57 +1,16 @@
-// const config = {
-//   baseUrl: 'https://api.kinopoisk.dev/v1.4/movie/random?',
-//   // headers: {
-//   //   "X-API-KEY": "P0Q2AHA-JJW45CM-P5JZ66Y-K22ZHBW",
-//     // 'Content-Type': 'application/json'
-//   // },
-// };
-
-// function checkResponse(res) {
-//   if (res.ok) {
-//     return res.json();
-//   }
-//   return Promise.reject(`Ошибка: ${res.status}`);
-// };
-
-// // Получение данных фильма
-// export function getSearchData() {
-//   return fetch(`${config.baseUrl}`, {
-//     method: 'GET',
-//     headers: config.headers,
-//     redirect: 'follow',
-    
-//   })
-//   .then(res => checkResponse(res))
-//   .then(result => {
-//     const parsedData = JSON.parse(result);
-//     console.log(parsedData);
-//     console.log('hi')
-//   })
-// };
-
-// "https://api.kinopoisk.dev/v1.4/movie/random?rating.kp=6.8-10"
-
-
-// var requestOptions = {
-//   method: 'GET',
-//   redirect: 'follow',
-//   headers: {
-//     "X-API-KEY": "P0Q2AHA-JJW45CM-P5JZ66Y-K22ZHBW"
-//   }
-// };
-
+import { tokenValue } from "./token";
 
 // работающий вариант API
 // TODO: разобраться с Content-Type
 const config = {
   baseUrl: 'https://api.kinopoisk.dev/v1.4/movie/random?',
   headers: {
-    "X-API-KEY": "P0Q2AHA-JJW45CM-P5JZ66Y-K22ZHBW",
+    "X-API-KEY": tokenValue,
     'Content-Type': 'application/json'
   }
 };
 
-
+// TODO: вынести присвоение полученных данных в index
 export async function getSearchData(genreState, ratingState) {
   return fetch(`${config.baseUrl}&${ratingState}&${genreState}`, {
     method: 'GET',
@@ -83,30 +42,7 @@ export async function getSearchData(genreState, ratingState) {
   .catch(error => console.log('error', error));
 }
 
+// TODO: написать запрос на получение списка жанров
+// при инициализации страницы
 
-
-// // Смена данных профиля
-// export function changeUserData(profileTitle, profileDescription) {
-//   return fetch(`${config.baseUrl}/users/me`, {
-//     method: 'PATCH',
-//     headers: config.headers,
-//     body: JSON.stringify({
-//         name: profileTitle,
-//         about: profileDescription
-//     })
-//   })
-//   .then(res => checkResponse(res));
-// };
-
-// // Смена аватара профиля
-// export function changeUserImage(profileImage) {
-//   return fetch(`${config.baseUrl}/users/me/avatar`, {
-//     method: 'PATCH',
-//     headers: config.headers,
-//     body: JSON.stringify({
-//       avatar: profileImage
-//     })
-//   })
-//   .then(res => checkResponse(res));
-// };
 
