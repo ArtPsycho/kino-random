@@ -23,3 +23,10 @@
   background-color: #d17848;
 }
 
+.button-return {
+  height: 32px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background-color: transparent;
+}
