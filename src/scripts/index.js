@@ -81,22 +81,25 @@ function updateGenreSelector() {
 }
 
 // Слушатель обновления выбора селектора жанров
-// genreSelect.addEventListener('change', updateSelector);
 genreSelect.addEventListener('change', function() {
   updateGenreSelector();
   genreState = `genres.name=${genreValue}`;
   console.log(genreState);
+  if (genreValue != '0') {
+    genreButton.classList.add('button-accent');
+    genreButton.addEventListener('click', () => {
+      formGenre.classList.remove('modal__opened');
+      // formResult.classList.add('modal__opened');
+      formRating.classList.add('modal__opened');
+      console.log(genreState);
+    })
+  } else {
+    genreButton.classList.remove('button-accent');
+  }
   return genreState;
 });
 
-// TODO: ограничить работоспособность кнопки без выбора жанра
-genreButton.addEventListener('click', () => {
-  formGenre.classList.remove('modal__opened');
-  // formResult.classList.add('modal__opened');
-  formRating.classList.add('modal__opened');
-  console.log(genreState);
-  
-})
+// TODO: ограничить кнопки в функцию
 
 
 // Глобально объявляем переменные значений состояния "Рейтинг"
@@ -120,6 +123,19 @@ ratingBackButton.addEventListener('click', () => {
 function updateRatingSelector() {
   ratingValue = document.querySelector('input[name=rating]:checked').value;
   console.log(ratingValue);
+
+  if (ratingValue != '0') {
+    ratingButton.classList.add('button-accent');
+    ratingButton.addEventListener('click', () => {
+      formRating.classList.remove('modal__opened');
+      ratingState = `rating.kp=${ratingValue}`;
+      console.log(ratingState);
+      getSearchData(genreState, ratingState);
+      formResult.classList.add('modal__opened');
+    })
+  } else {
+    ratingButton.classList.remove('button-accent');
+  }
   return ratingValue;
 }
 
@@ -162,15 +178,15 @@ lowRatingButton.addEventListener('click', () => {
 
 // Слушатель на кнопку действия страницы рейтинга
 // Добавляет значение value радио в общий стейт
-ratingButton.addEventListener('click', () => {
-  formRating.classList.remove('modal__opened');
+// ratingButton.addEventListener('click', () => {
+//   formRating.classList.remove('modal__opened');
   
-  updateRatingSelector();
-  ratingState = `rating.kp=${ratingValue}`;
-  console.log(ratingState);
-  getSearchData(genreState, ratingState);
-  formResult.classList.add('modal__opened');
-})
+//   updateRatingSelector();
+//   ratingState = `rating.kp=${ratingValue}`;
+//   console.log(ratingState);
+//   getSearchData(genreState, ratingState);
+//   formResult.classList.add('modal__opened');
+// })
 
 
 // Страница отображения результата
