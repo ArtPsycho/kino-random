@@ -2,7 +2,6 @@ import '../pages/index.css';
 import { getSearchData } from './api';
 
 
-
 // Стартовая страница
 const startButton = document.getElementById('start-button');
 const formStart = document.getElementById('form-start')
@@ -60,10 +59,19 @@ membersButton.addEventListener('click', () => {
 // Страница выбора жанра
 const genreButton = document.getElementById('genre-button');
 const genreSelect = document.getElementById('genre-select');
+const genreBackButton = document.getElementById('genre-back');
+
+genreBackButton.addEventListener('click', () => {
+  formGenre.classList.remove('modal__opened');
+  formStart.classList.add('modal__opened');
+})
+
+
 
 // Глобально объявляем переменные значений состояния "Жанр"
 let genreValue;
 let genreState;
+
 
 // Обновление селектора жанров
 function updateGenreSelector() {
@@ -100,6 +108,13 @@ const highRatingButton = document.getElementById('high-rating-button');
 const middleRatingButton = document.getElementById('middle-rating-button');
 const lowRatingButton = document.getElementById('low-rating-button');
 const ratingButton = document.getElementById('rating-button');
+const ratingBackButton = document.getElementById('rating-back');
+
+
+ratingBackButton.addEventListener('click', () => {
+  formRating.classList.remove('modal__opened');
+  formGenre.classList.add('modal__opened');
+})
 
 // Обновление value при переключении радио
 function updateRatingSelector() {

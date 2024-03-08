@@ -26,7 +26,15 @@
 .button-return {
   height: 32px;
   display: flex;
-  gap: 8px;
+  gap: 4px;
   align-items: center;
   background-color: transparent;
+  color: #343434;
+  font-size: 18px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+}
+
+.button-return:hover {
+  color: #d17848;
 }
