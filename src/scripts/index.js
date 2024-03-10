@@ -124,7 +124,22 @@ function updateRatingSelector() {
   ratingValue = document.querySelector('input[name=rating]:checked').value;
   console.log(ratingValue);
 
-  if (ratingValue != '0') {
+  // if (ratingValue != null) {
+  //   ratingButton.classList.add('button-accent');
+  //   ratingButton.addEventListener('click', () => {
+  //     formRating.classList.remove('modal__opened');
+  //     ratingState = `rating.kp=${ratingValue}`;
+  //     console.log(ratingState);
+  //     getSearchData(genreState, ratingState);
+  //     formResult.classList.add('modal__opened');
+  //   })
+  // } else {
+  //   ratingButton.classList.remove('button-accent');
+  // }
+
+  if (ratingValue == null) {
+    ratingButton.classList.remove('button-accent');
+  } else {
     ratingButton.classList.add('button-accent');
     ratingButton.addEventListener('click', () => {
       formRating.classList.remove('modal__opened');
@@ -133,8 +148,6 @@ function updateRatingSelector() {
       getSearchData(genreState, ratingState);
       formResult.classList.add('modal__opened');
     })
-  } else {
-    ratingButton.classList.remove('button-accent');
   }
   return ratingValue;
 }
