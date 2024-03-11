@@ -11,12 +11,23 @@ const formRating = document.getElementById('form-rating');
 const formMembers = document.getElementById('form-members');
 
 
+// TODO: написать функцию метод создания функции пустого newState
+// для дальнейшей записи в него значений и запроса на сервер
+
+
+function newState() {
+  ratingState = '0';
+  genreState = null;
+  console.log('created');
+}
+
 // Кнопка start на стартовой странице
 // Переключение на другую страницу
 startButton.addEventListener('click', () => {
   formStart.classList.remove('modal__opened');
   // formMembers.classList.add('modal__opened');
   formGenre.classList.add('modal__opened');
+  newState();
 })
 
 // Страница выбора количества участников
@@ -61,17 +72,15 @@ const genreButton = document.getElementById('genre-button');
 const genreSelect = document.getElementById('genre-select');
 const genreBackButton = document.getElementById('genre-back');
 
+// Кнопка назад страницы жанров
 genreBackButton.addEventListener('click', () => {
   formGenre.classList.remove('modal__opened');
   formStart.classList.add('modal__opened');
 })
 
-
-
 // Глобально объявляем переменные значений состояния "Жанр"
 let genreValue;
 let genreState;
-
 
 // Обновление селектора жанров
 function updateGenreSelector() {
@@ -80,26 +89,42 @@ function updateGenreSelector() {
   return genreValue;
 }
 
-// Слушатель обновления выбора селектора жанров
+// Очистка параметров выбора жанра
+function clearGenreSelector() {
+  console.log('clearGenre'); 
+  genreValue = genreSelect.options[genreSelect.selectedIndex = [0]].value;
+  console.log(genreValue);
+  validateGenre(genreValue);
+  return genreValue;
+}
+
+// Проверка валидности выбора жанра
+function validateGenre(genreValue) {
+  if (genreValue == 'null') {
+    genreButton.classList.remove('button-accent');
+    genreButton.removeEventListener('click', genreAcceptButton);
+    console.log('Жанр не прошел валидацию');
+  } else {
+    genreButton.classList.add('button-accent');
+    genreButton.addEventListener('click', genreAcceptButton);
+    console.log('Жанр валидирован')
+  }
+}
+
+// Подтвеждение жанра
+function genreAcceptButton() {
+    formGenre.classList.remove('modal__opened');
+    formRating.classList.add('modal__opened');
+}
+
+// Обновление жанра в state
 genreSelect.addEventListener('change', function() {
   updateGenreSelector();
+  validateGenre(genreValue);
   genreState = `genres.name=${genreValue}`;
   console.log(genreState);
-  if (genreValue != '0') {
-    genreButton.classList.add('button-accent');
-    genreButton.addEventListener('click', () => {
-      formGenre.classList.remove('modal__opened');
-      // formResult.classList.add('modal__opened');
-      formRating.classList.add('modal__opened');
-      console.log(genreState);
-    })
-  } else {
-    genreButton.classList.remove('button-accent');
-  }
   return genreState;
 });
-
-// TODO: ограничить кнопки в функцию
 
 
 // Глобально объявляем переменные значений состояния "Рейтинг"
@@ -214,6 +239,10 @@ const movieImage = document.getElementById('description_image');
 const movieCountry = document.getElementById('description_country');
 
 
+function clearState() {
+  genreState = '';
+  ratingState = '';
+}
 
 // TODO: сбростить genreState при нажатии на homeButton
 
@@ -231,7 +260,8 @@ homeButton.addEventListener('click', () => {
   movieImage.src = '';
   movieImage.alt = '';
   movieCountry.textContent = '';
-
+  clearState();
+  clearGenreSelector();
 })
 
 // Кнопка repeat на странице отображения результата
