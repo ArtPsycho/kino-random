@@ -4,19 +4,21 @@
   border-radius: 8px;
   /* border: solid 4px #3b32c2; */
   border: none;
-  background-color: #363532;
-  color: aliceblue;
+  background-color: #343434;
+  color: #676767;
   font-size: 18px;
   font-weight: 900;
   font-family: 'Inter', sans-serif;
 }
 
-.button:hover {
+/* .button:hover {
   background-color: #696881;
-}
+} */
 
 .button-accent {
   background-color: #ed6f2b;
+  color: #fff;
+  cursor: pointer;
 }
 
 .button-accent:hover {
@@ -33,6 +35,7 @@
   font-size: 18px;
   font-family: 'Inter', sans-serif;
   font-weight: 900;
+  cursor: pointer;
 }
 
 .button-return:hover {

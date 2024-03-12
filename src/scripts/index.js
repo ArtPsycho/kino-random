@@ -11,14 +11,12 @@ const formRating = document.getElementById('form-rating');
 const formMembers = document.getElementById('form-members');
 
 
-// TODO: написать функцию метод создания функции пустого newState
-// для дальнейшей записи в него значений и запроса на сервер
-
-
+// Пустой state
 function newState() {
   ratingState = '0';
   genreState = null;
   console.log('created');
+  console.log(ratingState, genreState)
 }
 
 // Кнопка start на стартовой странице
@@ -30,39 +28,36 @@ startButton.addEventListener('click', () => {
   newState();
 })
 
-// Страница выбора количества участников
-const membersButton = document.getElementById('members-button');
-const membersSelect = document.getElementById('members-select');
+// // Страница выбора количества участников
+// const membersButton = document.getElementById('members-button');
+// const membersSelect = document.getElementById('members-select');
 
-// Глобально объявляем переменные значений состояния "Выбор участников"
-let membersValue;
+// // Глобально объявляем переменные значений состояния "Выбор участников"
+// let membersValue;
 
-// Обновление селектора участников
-function updateMembersSelector() {
-  membersValue = membersSelect.options[membersSelect.selectedIndex].value;
-  console.log(membersValue);
-  return membersValue;
-}
-
-// Слушатель обновления выбора селектора участников
-membersSelect.addEventListener('change', function() {
-  updateMembersSelector();
-  // genreState = `genres.name=${genreValue}`;
-});
-
-
-// function createMembersState(membersValue) {
-//   for (let i = 0; i < membersValue; i++) {
-    
-//   }
+// // Обновление селектора участников
+// function updateMembersSelector() {
+//   membersValue = membersSelect.options[membersSelect.selectedIndex].value;
+//   console.log(membersValue);
+//   return membersValue;
 // }
 
-membersButton.addEventListener('click', () => {
-  formMembers.classList.remove('modal__opened');
-  formGenre.classList.add('modal__opened');
-})
+// // Слушатель обновления выбора селектора участников
+// membersSelect.addEventListener('change', function() {
+//   updateMembersSelector();
+//   // genreState = `genres.name=${genreValue}`;
+// });
 
+// // function createMembersState(membersValue) {
+// //   for (let i = 0; i < membersValue; i++) {
+    
+// //   }
+// // }
 
+// membersButton.addEventListener('click', () => {
+//   formMembers.classList.remove('modal__opened');
+//   formGenre.classList.add('modal__opened');
+// })
 
 
 // TODO: добавлять варианты выбора жанров через перебор json
@@ -76,6 +71,7 @@ const genreBackButton = document.getElementById('genre-back');
 genreBackButton.addEventListener('click', () => {
   formGenre.classList.remove('modal__opened');
   formStart.classList.add('modal__opened');
+  clearGenreSelector();
 })
 
 // Глобально объявляем переменные значений состояния "Жанр"
@@ -102,17 +98,17 @@ function clearGenreSelector() {
 function validateGenre(genreValue) {
   if (genreValue == 'null') {
     genreButton.classList.remove('button-accent');
-    genreButton.removeEventListener('click', genreAcceptButton);
+    genreButton.removeEventListener('click', genreAccept);
     console.log('Жанр не прошел валидацию');
   } else {
     genreButton.classList.add('button-accent');
-    genreButton.addEventListener('click', genreAcceptButton);
+    genreButton.addEventListener('click', genreAccept);
     console.log('Жанр валидирован')
   }
 }
 
 // Подтвеждение жанра
-function genreAcceptButton() {
+function genreAccept() {
     formGenre.classList.remove('modal__opened');
     formRating.classList.add('modal__opened');
 }
@@ -127,104 +123,85 @@ genreSelect.addEventListener('change', function() {
 });
 
 
-// Глобально объявляем переменные значений состояния "Рейтинг"
-let ratingValue;
-let ratingState;
-
 // Страница выбора рейтинга
 const highRatingButton = document.getElementById('high-rating-button');
 const middleRatingButton = document.getElementById('middle-rating-button');
 const lowRatingButton = document.getElementById('low-rating-button');
 const ratingButton = document.getElementById('rating-button');
 const ratingBackButton = document.getElementById('rating-back');
+const ratingSelect = document.getElementById('rating-select');
 
+// Глобально объявляем переменные значений состояния "Рейтинг"
+let ratingValue;
+let ratingState;
 
+// Кнопка назад на странице рейтинга
 ratingBackButton.addEventListener('click', () => {
   formRating.classList.remove('modal__opened');
   formGenre.classList.add('modal__opened');
+  if(ratingValue != null) {
+    clearRatingSelector();
+  };
 })
 
-// Обновление value при переключении радио
+// Обновление рейтинга
 function updateRatingSelector() {
   ratingValue = document.querySelector('input[name=rating]:checked').value;
   console.log(ratingValue);
-
-  // if (ratingValue != null) {
-  //   ratingButton.classList.add('button-accent');
-  //   ratingButton.addEventListener('click', () => {
-  //     formRating.classList.remove('modal__opened');
-  //     ratingState = `rating.kp=${ratingValue}`;
-  //     console.log(ratingState);
-  //     getSearchData(genreState, ratingState);
-  //     formResult.classList.add('modal__opened');
-  //   })
-  // } else {
-  //   ratingButton.classList.remove('button-accent');
-  // }
-
-  if (ratingValue == null) {
-    ratingButton.classList.remove('button-accent');
-  } else {
-    ratingButton.classList.add('button-accent');
-    ratingButton.addEventListener('click', () => {
-      formRating.classList.remove('modal__opened');
-      ratingState = `rating.kp=${ratingValue}`;
-      console.log(ratingState);
-      getSearchData(genreState, ratingState);
-      formResult.classList.add('modal__opened');
-    })
-  }
   return ratingValue;
 }
 
-// Привязываем кнопки к радио
-highRatingButton.addEventListener('click', () => {
-  document.getElementById('high-rating-radio-button').checked = true;
-  document.getElementById('middle-rating-radio-button').checked = false;
-  document.getElementById('low-rating-radio-button').checked = false;
-  console.log('high-rating');
-  updateRatingSelector();
-  highRatingButton.closest('.select-list_item').classList.add('select-list_item-accent');
-  middleRatingButton.closest('.select-list_item').classList.remove('select-list_item-accent');
-  lowRatingButton.closest('.select-list_item').classList.remove('select-list_item-accent');
-})
+// Проверка валидности выбора рейтинга
+function validateRating(ratingValue) {
+  if (ratingValue = null) {
+    ratingButton.classList.remove('button-accent');
+    ratingButton.removeEventListener('click', ratingAccept);
+    console.log('Рейтинг не прошел валидацию');
+  } else {
+    ratingButton.classList.add('button-accent');
+    ratingButton.addEventListener('click', ratingAccept);
+    console.log('Рейтинг валидирован');
+  }
+}
 
-middleRatingButton.addEventListener('click', () => {
-  document.getElementById('middle-rating-radio-button').checked = true;
-  document.getElementById('high-rating-radio-button').checked = false;
-  document.getElementById('low-rating-radio-button').checked = false;
-  console.log('middle-rating');
-  updateRatingSelector()
-  middleRatingButton.closest('.select-list_item').classList.add('select-list_item-accent');
-  // middleRatingButton.filter(closest('.select-list_item')).classList.remove('select-list_item-accent');
-  highRatingButton.closest('.select-list_item').classList.remove('select-list_item-accent');
-  lowRatingButton.closest('.select-list_item').classList.remove('select-list_item-accent');
-})
+// Очистка параметров выбора рейтинга
+function clearRatingSelector() {
+  console.log('clearRating');
+  document.querySelector('input[name=rating]:checked').checked = false;
+  ratingValue = null;
+  validateRating(ratingValue);
+  // ratingButton.removeEventListener('click', ratingAccept);
+  Array.from(document.querySelectorAll('.select-list_item')).forEach(element => element.classList.remove('select-list_item-accent'));
+  return ratingValue;
+}
 
-lowRatingButton.addEventListener('click', () => {
-  document.getElementById('low-rating-radio-button').checked = true;
-  document.getElementById('high-rating-radio-button').checked = false;
-  document.getElementById('middle-rating-radio-button').checked = false;
-  console.log('low-rating');
-  updateRatingSelector()
-  lowRatingButton.closest('.select-list_item').classList.add('select-list_item-accent');
-  highRatingButton.closest('.select-list_item').classList.remove('select-list_item-accent');
-  middleRatingButton.closest('.select-list_item').classList.remove('select-list_item-accent');
-})
+// Кастомные кнопки радио
+const radioOptions = document.querySelectorAll('.select-list_item');
 
-// TODO: ограничить возможность нажатия кнопки без выбоа жанра
+// Присвоение кастомных кнопок и обновление в state
+radioOptions.forEach((option) => option.addEventListener('click', (event) => {
+    event.preventDefault();
+    event.target.querySelector('input').checked = true;
+    event.target.classList.add('select-list_item-accent');
+    Array.from(document.querySelectorAll('.select-list_item')).filter(element => element != event.target).forEach(element => element.classList.remove('select-list_item-accent'));
+    
+    // Обновление, проверка value и добавление его в state
+    updateRatingSelector();
+    validateRating(ratingValue);
+    ratingState = `rating.kp=${ratingValue}`;
+    
+    console.log('option button works');
+    console.log(ratingState);
+    return ratingState
+  }
+));
 
-// Слушатель на кнопку действия страницы рейтинга
-// Добавляет значение value радио в общий стейт
-// ratingButton.addEventListener('click', () => {
-//   formRating.classList.remove('modal__opened');
-  
-//   updateRatingSelector();
-//   ratingState = `rating.kp=${ratingValue}`;
-//   console.log(ratingState);
-//   getSearchData(genreState, ratingState);
-//   formResult.classList.add('modal__opened');
-// })
+// Подтверждение рейтинга
+function ratingAccept() {
+  formRating.classList.remove('modal__opened');
+  formResult.classList.add('modal__opened');
+  getSearchData(genreState, ratingState);
+}
 
 
 // Страница отображения результата
@@ -238,10 +215,9 @@ const movieRating = document.getElementById('description_rating');
 const movieImage = document.getElementById('description_image');
 const movieCountry = document.getElementById('description_country');
 
-
 function clearState() {
   genreState = '';
-  ratingState = '';
+  ratingState = null;
 }
 
 // TODO: сбростить genreState при нажатии на homeButton
@@ -260,8 +236,9 @@ homeButton.addEventListener('click', () => {
   movieImage.src = '';
   movieImage.alt = '';
   movieCountry.textContent = '';
-  clearState();
+  // clearState();
   clearGenreSelector();
+  clearRatingSelector();
 })
 
 // Кнопка repeat на странице отображения результата
