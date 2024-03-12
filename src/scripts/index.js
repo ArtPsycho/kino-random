@@ -111,6 +111,7 @@ function validateGenre(genreValue) {
 function genreAccept() {
     formGenre.classList.remove('modal__opened');
     formRating.classList.add('modal__opened');
+    toggleRating();
 }
 
 // Обновление жанра в state
@@ -141,6 +142,7 @@ ratingBackButton.addEventListener('click', () => {
   formGenre.classList.add('modal__opened');
   if(ratingValue != null) {
     clearRatingSelector();
+    ratingButton.classList.remove('button-accent');
   };
 })
 
@@ -178,12 +180,30 @@ function clearRatingSelector() {
 // Кастомные кнопки радио
 const radioOptions = document.querySelectorAll('.select-list_item');
 
+// Слушатель на кнопках рейтинга
+const toggleRating = () => {
+  const selectListItems = document.querySelectorAll('.select-list_item');
+  selectListItems.forEach((item) => {
+    item.addEventListener('click', () => {
+      if (!item.classList.contains('select-list_item-accent')) {
+        selectListItems.forEach((item) => {
+          item.classList.remove('select-list_item-accent');
+        });
+        item.classList.add('select-list_item-accent');
+      }
+    });
+  });
+}
+        
 // Присвоение кастомных кнопок и обновление в state
 radioOptions.forEach((option) => option.addEventListener('click', (event) => {
     event.preventDefault();
-    event.target.querySelector('input').checked = true;
-    event.target.classList.add('select-list_item-accent');
-    Array.from(document.querySelectorAll('.select-list_item')).filter(element => element != event.target).forEach(element => element.classList.remove('select-list_item-accent'));
+    
+    // Проверка на инпут
+    const input = option.querySelector('input');
+    if (input) {
+      input.checked = true;
+    }
     
     // Обновление, проверка value и добавление его в state
     updateRatingSelector();
@@ -195,6 +215,7 @@ radioOptions.forEach((option) => option.addEventListener('click', (event) => {
     return ratingState
   }
 ));
+
 
 // Подтверждение рейтинга
 function ratingAccept() {
@@ -219,8 +240,6 @@ function clearState() {
   genreState = '';
   ratingState = null;
 }
-
-// TODO: сбростить genreState при нажатии на homeButton
 
 // Кнопка home на странице отображения результата
 // Очистка формы
