@@ -42,7 +42,7 @@
   color: #d17848;
 }
 
-.button-repeat {
+.button-additional {
   width: 100%;
   min-height: 60px;
   border-radius: 8px;
@@ -55,7 +55,7 @@
   cursor: pointer;
 }
 
-.button-repeat:hover {
+.button-additional:hover {
   background-color: #676767;
   color: #fff;
 }

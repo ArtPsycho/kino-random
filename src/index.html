@@ -21,8 +21,35 @@
       </div>
     </header>
 
+    <div class="modal-autorization" id="autorization">
+      <div class="modal__container">
+        <div class="modal__container_info">
+          <h2 class="modal__title">Авторизация</h2>
+          <p class="modal__description">Приветствую вас! Чтобы воспользоваться сервисом, необходимо получить токен для личного доступа к базе с фильмами.</p>
+        </div>
+        <div class="modal__container_buttons">
+          <button class="button button-accent" id="get-token-button">Получить доступ</button>
+          <button class="button-additional" id="enter-token-button">Есть токен</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-autorization" id="autorization-token">
+      <div class="modal__container">
+        <h2 class="modal__title">Токен</h2>
+        <p class="modal__description">Введите полученный токен в поле.</p>
+      </div>
+      <div class="modal__container_action">
+        <input class="action-input" type="text" required minlength="31" maxlength="31" placeholder="Введите значение..." id="token-input">
+      </div>
+      <div class="modal__container_buttons">
+        <button class="button" id="accept-token">Подтвердить</button>
+        <button class="button-additional" id="token-return">Назад</button>
+      </div>
+    </div>
+
     <!-- Начало -->
-    <div class="modal modal__opened" id="form-start">
+    <div class="modal" id="form-start">
      <div class="modal__container">
       <div class="modal__container_info">
         <h2 class="modal__title">Добро пожаловать!</h2>
@@ -168,7 +195,7 @@
         </div>
         <div class="modal__container_buttons">
           <button class="button button-accent" id="home-button">На главную</button>
-          <button class="button-repeat" id="repeat-button">Повторить</button>
+          <button class="button-additional" id="repeat-button">Повторить</button>
         </div>
       </div>
     </div>

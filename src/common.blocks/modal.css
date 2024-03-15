@@ -2,13 +2,14 @@
   display: none;
   background-color: #131313;
   width: 500px;
-  height: 720px;
+  height: 100%;
   border-radius: 16px;
-  position: absolute;
+  /* position: absolute;
   top: 50%;
-  transform: translate(0, 7%);
+  transform: translate(0, 7%); */
   border: solid 2px #343434;
   padding: 30px 40px;
+  margin: 20px 0;
 }
 
 .modal.modal__opened {
@@ -103,4 +104,21 @@ h1, h2, h3, p {
   gap: 10px;
 }
 
+
+.modal-autorization {
+  display: none;
+  background-color: #131313;
+  width: 500px;
+  border-radius: 16px;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  border: solid 2px #343434;
+  padding: 30px 40px;
+  justify-self: flex-end;
+}
+
+.modal-autorization.modal__opened {
+  display: block;
+}
 

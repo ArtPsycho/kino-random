@@ -2,17 +2,23 @@ import { tokenValue } from "./token";
 
 // работающий вариант API
 // TODO: разобраться с Content-Type
+// TODO: переработать передачу токена  напрямую в headers
+
+// на данный момент токен не обновляется в X-API-KEY 
+// после изменения. В значении остается первично 
+// инициализированное значние. Поэтому токен передается в fetch
+
 const config = {
   baseUrl: 'https://api.kinopoisk.dev/v1.4/movie/random?',
   headers: {
-    "X-API-KEY": tokenValue,
+    // "X-API-KEY": '',
     'Content-Type': 'application/json'
   }
 };
 
 // TODO: вынести присвоение полученных данных в index
 export async function getSearchData(genreState, ratingState) {
-  return fetch(`${config.baseUrl}&${ratingState}&${genreState}`, {
+    return fetch(`${config.baseUrl}&${ratingState}&${genreState}&token=${tokenValue}`, {
     method: 'GET',
     redirect: 'follow',
     headers: config.headers

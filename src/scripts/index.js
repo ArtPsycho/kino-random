@@ -1,14 +1,52 @@
 import '../pages/index.css';
 import { getSearchData } from './api';
+import { tokenValue } from './token';
+import { updateTokenValue } from './token';
+import { checkToken } from './token';
 
 
-// Стартовая страница
+// Объяволение всех форм сервиса
+export const formToken = document.getElementById('autorization');
+export const formEnterToken = document.getElementById('autorization-token');
+export const formStart = document.getElementById('form-start')
 const startButton = document.getElementById('start-button');
-const formStart = document.getElementById('form-start')
 const formResult = document.getElementById('form-result');
 const formGenre = document.getElementById('form-genre');
 const formRating = document.getElementById('form-rating');
 const formMembers = document.getElementById('form-members');
+
+
+// Проверяем наличие токена при загрузке страницы
+checkToken();
+
+// Объявление кнопок форм для токена
+const getTokenButton = document.getElementById('get-token-button');
+const enterTokenButton = document.getElementById('enter-token-button');
+
+export const acceptTokenButton = document.getElementById('accept-token');
+const returnTokenButton = document.getElementById('token-return');
+
+// Кнопка получения токена / переадресация на сайт получения токена
+getTokenButton.addEventListener('click', () => {
+  window.open("https://kinopoisk.dev/", "_blank");
+  formToken.classList.remove('modal__opened');
+  formEnterToken.classList.add('modal__opened');
+})
+
+// Кнопка ввода токена
+enterTokenButton.addEventListener('click', () => {
+  formToken.classList.remove('modal__opened');
+  formEnterToken.classList.add('modal__opened');
+})
+
+// Кнопка назад от страницы ввода токена
+returnTokenButton.addEventListener('click', () => {
+  formToken.classList.add('modal__opened');
+  formEnterToken.classList.remove('modal__opened');
+})
+
+// Слушатель обновления токена при его подтверждении
+acceptTokenButton.addEventListener('click', updateTokenValue);
 
 
 // Пустой state
@@ -26,6 +64,8 @@ startButton.addEventListener('click', () => {
   // formMembers.classList.add('modal__opened');
   formGenre.classList.add('modal__opened');
   newState();
+  // console.log(typeof(tokenValueUpd));
+  // console.log(tokenValueUpd);
 })
 
 // // Страница выбора количества участников
@@ -112,6 +152,7 @@ function genreAccept() {
     formGenre.classList.remove('modal__opened');
     formRating.classList.add('modal__opened');
     toggleRating();
+    console.log(typeof(tokenValue));
 }
 
 // Обновление жанра в state
