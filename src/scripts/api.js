@@ -1,24 +1,33 @@
-import { tokenValue } from "./token";
+import { updateTokenValue } from './token';
 
 // работающий вариант API
 // TODO: разобраться с Content-Type
-// TODO: переработать передачу токена  напрямую в headers
 
-// на данный момент токен не обновляется в X-API-KEY 
-// после изменения. В значении остается первично 
-// инициализированное значние. Поэтому токен передается в fetch
-
-const config = {
+// Исходный объект конфига
+const baseConfig = {
   baseUrl: 'https://api.kinopoisk.dev/v1.4/movie/random?',
   headers: {
-    // "X-API-KEY": '',
     'Content-Type': 'application/json'
   }
 };
 
+// Функция создания нового конфига при инпуте токена через форму
+function createConfig() {
+  const updatedTokenValue = updateTokenValue();
+  return {
+    ...baseConfig,
+    headers: {
+      ...baseConfig.headers,
+      "X-API-KEY": updatedTokenValue
+    }
+  };
+}
+
 // TODO: вынести присвоение полученных данных в index
 export async function getSearchData(genreState, ratingState) {
-    return fetch(`${config.baseUrl}&${ratingState}&${genreState}&token=${tokenValue}`, {
+  const config = createConfig();
+
+  return fetch(`${config.baseUrl}&${ratingState}&${genreState}`, {
     method: 'GET',
     redirect: 'follow',
     headers: config.headers
@@ -35,9 +44,7 @@ export async function getSearchData(genreState, ratingState) {
     const movieImage = document.getElementById('description_image');
     const movieCountry = document.getElementById('description_country');
 
-    movieTitle.textContent = parsedData.name;
-    
-    movieYear.textContent = `Год выпуска: ${parsedData.year}`;
+    movieTitle.textContent = parsedData.name;movieYear.textContent = `Год выпуска: ${parsedData.year}`;
     movieRating.textContent = `Рейтинг на КиноПоиск: ${parsedData.rating.kp}`;
     movieGenre.textContent = `Жанр: ${parsedData.genres.map(genre => genre.name).join(', ')}`;
     movieImage.src = parsedData.poster.previewUrl;
@@ -50,5 +57,3 @@ export async function getSearchData(genreState, ratingState) {
 
 // TODO: написать запрос на получение списка жанров
 // при инициализации страницы
-
-

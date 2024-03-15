@@ -1,7 +1,5 @@
 import '../pages/index.css';
 import { getSearchData } from './api';
-import { tokenValue } from './token';
-import { updateTokenValue } from './token';
 import { checkToken } from './token';
 
 
@@ -46,7 +44,9 @@ returnTokenButton.addEventListener('click', () => {
 })
 
 // Слушатель обновления токена при его подтверждении
-acceptTokenButton.addEventListener('click', updateTokenValue);
+acceptTokenButton.addEventListener('click', () => {
+  checkToken();
+});
 
 
 // Пустой state
@@ -152,7 +152,6 @@ function genreAccept() {
     formGenre.classList.remove('modal__opened');
     formRating.classList.add('modal__opened');
     toggleRating();
-    console.log(typeof(tokenValue));
 }
 
 // Обновление жанра в state
